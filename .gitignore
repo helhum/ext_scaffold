@@ -1,2 +1,2 @@
-vendor/*
-web/*
+.Build/*
+composer.lock

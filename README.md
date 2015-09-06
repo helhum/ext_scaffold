@@ -62,6 +62,7 @@ you want to test your extension with.
 This will will install TYPO3 and all other required dependencies in a (hidden) `.Build/` folder. Since this command changed your composer.json file,
 make sure you reset the changes e.g. by doing a git checkout with `git checkout composer.json`.
 
+If you want to use this test setup with TYPO3 6.2.x, you can try out this tweak, to get 6.2.x installed: `composer require typo3/cms="~6.2.14" typo3/cms-composer-installers="1.2.2 as 1.1.4"`
 
 ### Unit Tests
 You can now execute the unit tests of your extension simply by calling phpunit with the following command:

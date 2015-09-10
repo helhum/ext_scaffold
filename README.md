@@ -50,7 +50,7 @@ It is possible to create an [alias](https://github.com/helhum/ext_scaffold/blob/
 of the VCS the composer.json file resides in. This is especially useful for the master branch. Read the composer documentation fur further information.
  
 ### Test setup
-The [rest](https://github.com/helhum/ext_scaffold/blob/master/composer.json#L52-L55) is used to set up everything for your tests.
+The [rest](https://github.com/helhum/ext_scaffold/blob/master/composer.json#L42-L60) is used to set up everything for your tests.
 Read the next chapter for details how to execute the tests.
 
 

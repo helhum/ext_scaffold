@@ -6,8 +6,8 @@ php:
 
 env:
   matrix:
-    - TYPO3_VERSION=7.4.0
-    - TYPO3_VERSION=dev-master
+    - TYPO3_VERSION="7.4.0"
+    - TYPO3_VERSION="dev-master"
 
 sudo: false
 
@@ -25,7 +25,7 @@ before_install:
   - composer --version
 
 before_script:
-  - composer require typo3/cms=$TYPO3_VERSION
+  - composer require typo3/cms="$TYPO3_VERSION"
   # Restore composer.json
   - git checkout composer.json
   - export TYPO3_PATH_WEB=$PWD/.Build/Web

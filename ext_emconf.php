@@ -16,7 +16,7 @@ $EM_CONF[$_EXTKEY] = array (
   'modify_tables' => '',
   'clearCacheOnLoad' => 0,
   'lockType' => '',
-  'version' => '0.0.1',
+  'version' => '0.0.2',
   'constraints' => 
   array (
     'depends' => 
@@ -28,6 +28,20 @@ $EM_CONF[$_EXTKEY] = array (
     ),
     'suggests' => 
     array (
+    ),
+  ),
+  'autoload' => 
+  array (
+    'psr-4' => 
+    array (
+      'Helhum\\ExtScaffold\\' => 'Classes',
+    ),
+  ),
+  'autoload-dev' => 
+  array (
+    'psr-4' => 
+    array (
+      'Helhum\\ExtScaffold\\Tests\\' => 'Tests',
     ),
   ),
 );

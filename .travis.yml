@@ -7,6 +7,7 @@ php:
 env:
   matrix:
     - TYPO3_VERSION="7.4.0"
+    - TYPO3_VERSION="^7.0"
     - TYPO3_VERSION="dev-master"
 
 sudo: false
@@ -34,7 +35,7 @@ script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+    .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
 
   - >
     echo;

@@ -6,11 +6,12 @@ use TYPO3\CMS\Core\Tests\UnitTestCase;
 
 class FirstClassTest extends UnitTestCase
 {
-	/**
-	 * @test
-	 */
-	public function methodReturnsTrue() {
-		$firstClassObject = new LoadableClass();
-		$this->assertTrue($firstClassObject->returnsTrue());
-	}
+    /**
+     * @test
+     */
+    public function methodReturnsTrue()
+    {
+        $firstClassObject = new LoadableClass();
+        $this->assertTrue($firstClassObject->returnsTrue());
+    }
 }

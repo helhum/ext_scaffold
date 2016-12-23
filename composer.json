@@ -36,9 +36,17 @@
     "autoload-dev": {
         "psr-4": {
             "Helhum\\ExtScaffold\\Tests\\": "Tests",
-            "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
-            "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
-        }
+            "TYPO3\\CMS\\Core\\Tests\\": [
+                ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
+                ".Build/vendor/typo3/cms/components/testing_framework/compat/core/"
+            ],
+            "TYPO3\\CMS\\Fluid\\Tests\\": [
+                ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/",
+                ".Build/vendor/typo3/cms/components/testing_framework/compat/fluid/"
+            ],
+            "TYPO3\\CMS\\Components\\TestingFramework\\Core\\": ".Build/vendor/typo3/cms/components/testing_framework/core/",
+            "TYPO3\\CMS\\Components\\TestingFramework\\Fluid\\": ".Build/vendor/typo3/cms/components/testing_framework/fluid/"
+           }
     },
     "replace": {
         "ext_scaffold": "self.version",
@@ -54,7 +62,8 @@
     "scripts": {
         "post-autoload-dump": [
             "mkdir -p .Build/Web/typo3conf/ext/",
-            "[ -L .Build/Web/typo3conf/ext/ext_scaffold ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/ext_scaffold"
+            "[ -L .Build/Web/typo3conf/ext/ext_scaffold ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/ext_scaffold",
+            "if [ ! -d .Build/vendor/typo3/cms/components ]; then mkdir -p .Build/vendor/typo3/cms/components/testing_framework/core && ln -snvf ../../../typo3/sysext/core/Build .Build/vendor/typo3/cms/components/testing_framework/core/Build; fi"
         ]
     },
     "extra": {

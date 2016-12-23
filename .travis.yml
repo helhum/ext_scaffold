@@ -8,8 +8,8 @@ php:
   - 7
 
 env:
-  - TYPO3_VERSION="^6.2.0"
   - TYPO3_VERSION="^7.6.0"
+  - TYPO3_VERSION="^8.2.0"
   - TYPO3_VERSION="dev-master"
 
 matrix:
@@ -49,13 +49,14 @@ before_script:
   - composer require typo3/cms="$TYPO3_VERSION"
   # Restore composer.json
   - git checkout composer.json
+  - if [ TYPO3 == dev-master ]; then cd .Build/vendor/typo3/cms && git fetch https://review.typo3.org/Packages/TYPO3.CMS refs/changes/23/51023/4 && git checkout FETCH_HEAD && cd -; fi
   - export TYPO3_PATH_WEB=$PWD/.Build/Web
 
 script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+    .Build/bin/phpunit -c .Build/vendor/typo3/cms/components/testing_framework/core/Build/UnitTests.xml Tests/Unit/
 
   - >
     echo;
@@ -68,4 +69,4 @@ script:
     export typo3DatabaseHost="localhost";
     export typo3DatabaseUsername="root";
     export typo3DatabasePassword="";
-    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/FunctionalTests.xml {}'
+    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/components/testing_framework/core/Build/FunctionalTests.xml {}'

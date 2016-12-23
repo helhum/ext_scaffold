@@ -1,33 +1,10 @@
 language: php
 
 php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
   - 7
 
 env:
-  - TYPO3_VERSION="^7.6.0"
-  - TYPO3_VERSION="^8.2.0"
   - TYPO3_VERSION="dev-master"
-
-matrix:
-  exclude:
-    - php: 5.3
-      env: TYPO3_VERSION="^7.6.0"
-    - php: 5.4
-      env: TYPO3_VERSION="^7.6.0"
-    - php: 5.3
-      env: TYPO3_VERSION="dev-master"
-    - php: 5.4
-      env: TYPO3_VERSION="dev-master"
-    - php: 5.5
-      env: TYPO3_VERSION="dev-master"
-    - php: 5.6
-      env: TYPO3_VERSION="dev-master"
-    - php: 7
-      env: TYPO3_VERSION="^6.2.0"
 
 sudo: false
 
@@ -48,8 +25,8 @@ before_install:
 before_script:
   - composer require typo3/cms="$TYPO3_VERSION"
   # Restore composer.json
-  - git checkout composer.json
-  - if [ TYPO3 == dev-master ]; then cd .Build/vendor/typo3/cms && git fetch https://review.typo3.org/Packages/TYPO3.CMS refs/changes/23/51023/4 && git checkout FETCH_HEAD && cd -; fi
+  - if [ $TYPO3_VERSION == dev-master ]; then cd .Build/vendor/typo3/cms && git fetch https://review.typo3.org/Packages/TYPO3.CMS refs/changes/23/51023/4 && git checkout FETCH_HEAD && cd -; fi
+  - ls -al .Build/vendor/typo3/cms/components/testing_framework
   - export TYPO3_PATH_WEB=$PWD/.Build/Web
 
 script:

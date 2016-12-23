@@ -26,4 +26,3 @@ config.sys_language_uid = 1
 page = PAGE
 page.10 = FLUIDTEMPLATE
 page.10.file = EXT:ext_scaffold/Tests/Functional/Fixtures/Frontend/Template.html
-

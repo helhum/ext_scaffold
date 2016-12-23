@@ -1,33 +1,21 @@
 language: php
 
 php:
-  - 5.3
-  - 5.4
   - 5.5
   - 5.6
-  - 7
-
-env:
-  - TYPO3_VERSION="^6.2.0"
-  - TYPO3_VERSION="^7.6.0"
-  - TYPO3_VERSION="dev-master"
+  - 7.0
+  - 7.1
 
 matrix:
   exclude:
-    - php: 5.3
-      env: TYPO3_VERSION="^7.6.0"
-    - php: 5.4
-      env: TYPO3_VERSION="^7.6.0"
-    - php: 5.3
-      env: TYPO3_VERSION="dev-master"
-    - php: 5.4
-      env: TYPO3_VERSION="dev-master"
     - php: 5.5
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="^8.7"
     - php: 5.6
-      env: TYPO3_VERSION="dev-master"
-    - php: 7
-      env: TYPO3_VERSION="^6.2.0"
+      env: TYPO3_VERSION="^8.7"
+
+env:
+  - TYPO3_VERSION="^7.6"
+  - TYPO3_VERSION="^8.7"
 
 sudo: false
 
@@ -40,22 +28,16 @@ cache:
   directories:
     - $HOME/.composer/cache
 
-before_install:
-  - phpenv config-rm xdebug.ini
-  - composer self-update
-  - composer --version
-
-before_script:
-  - composer require typo3/cms="$TYPO3_VERSION"
-  # Restore composer.json
-  - git checkout composer.json
-  - export TYPO3_PATH_WEB=$PWD/.Build/Web
+install:
+  - composer require --dev typo3/cms="$TYPO3_VERSION"
+  - git checkout .
+  - export TYPO3_PATH_ROOT=$PWD/.Build/Web
 
 script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+    .Build/vendor/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
 
   - >
     echo;
@@ -68,4 +50,4 @@ script:
     export typo3DatabaseHost="localhost";
     export typo3DatabaseUsername="root";
     export typo3DatabasePassword="";
-    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/FunctionalTests.xml {}'
+    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/vendor/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml {}'

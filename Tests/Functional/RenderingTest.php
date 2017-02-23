@@ -27,8 +27,8 @@ namespace Helhum\ExtScaffold\Tests\Functional;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\Tests\Functional\Framework\Frontend\Response;
-use TYPO3\CMS\Core\Tests\FunctionalTestCase;
+use Nimut\TestingFramework\Http\Response;
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -93,11 +93,12 @@ class RenderingTest extends FunctionalTestCase
             'requestUrl' => 'http://localhost' . $requestUrl,
         );
 
-        $template = new \Text_Template(ORIGINAL_ROOT . 'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/request.tpl');
+        $template = new \Text_Template('ntf://Frontend/Request.tpl');
         $template->setVar(
             array(
                 'arguments' => var_export($arguments, true),
                 'originalRoot' => ORIGINAL_ROOT,
+                'ntfRoot' => __DIR__ . '/../../.Build/vendor/nimut/testing-framework/',
             )
         );
 

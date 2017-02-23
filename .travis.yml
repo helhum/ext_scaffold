@@ -10,7 +10,7 @@ php:
 env:
   - TYPO3_VERSION="^6.2.0"
   - TYPO3_VERSION="^7.6.0"
-  - TYPO3_VERSION="dev-master"
+  - TYPO3_VERSION="dev-master as 8.6.0"
 
 matrix:
   exclude:
@@ -19,13 +19,13 @@ matrix:
     - php: 5.4
       env: TYPO3_VERSION="^7.6.0"
     - php: 5.3
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="dev-master as 8.6.0"
     - php: 5.4
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="dev-master as 8.6.0"
     - php: 5.5
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="dev-master as 8.6.0"
     - php: 5.6
-      env: TYPO3_VERSION="dev-master"
+      env: TYPO3_VERSION="dev-master as 8.6.0"
     - php: 7
       env: TYPO3_VERSION="^6.2.0"
 
@@ -55,7 +55,7 @@ script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+    .Build/bin/phpunit -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
 
   - >
     echo;
@@ -68,4 +68,4 @@ script:
     export typo3DatabaseHost="localhost";
     export typo3DatabaseUsername="root";
     export typo3DatabasePassword="";
-    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --colors  -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/FunctionalTests.xml {}'
+    find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo "Running functional test suite {}"; .Build/bin/phpunit --colors  -c .Build/vendor/nimut/testing-framework/res/Configuration/FunctionalTests.xml {}'

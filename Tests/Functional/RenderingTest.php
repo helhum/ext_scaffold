@@ -86,7 +86,7 @@ class RenderingTest extends FunctionalTestCase
         if (property_exists($this, 'instancePath')) {
             $instancePath = $this->instancePath;
         } else {
-            $instancePath = ORIGINAL_ROOT . 'typo3temp/functional-' . substr(sha1(get_class($this)), 0, 7);
+            $instancePath = $this->getInstancePath();
         }
         $arguments = array(
             'documentRoot' => $instancePath,

@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "namelesscoder/typo3-repository-client": "^1.2",
+        "nimut/testing-framework": "^0.4",
         "mikey179/vfsStream": "^1.4",
         "phpunit/phpunit": "^4.7 || ^5.0"
     },
@@ -46,10 +47,7 @@
     },
     "config": {
         "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin",
-        "preferred-install": {
-            "typo3/cms": "source"
-        }
+        "bin-dir": ".Build/bin"
     },
     "scripts": {
         "post-autoload-dump": [

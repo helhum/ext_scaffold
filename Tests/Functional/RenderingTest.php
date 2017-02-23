@@ -27,8 +27,8 @@ namespace Helhum\ExtScaffold\Tests\Functional;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\Tests\Functional\Framework\Frontend\Response;
-use TYPO3\CMS\Core\Tests\FunctionalTestCase;
+use Nimut\TestingFramework\Http\Response;
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -86,18 +86,19 @@ class RenderingTest extends FunctionalTestCase
         if (property_exists($this, 'instancePath')) {
             $instancePath = $this->instancePath;
         } else {
-            $instancePath = ORIGINAL_ROOT . 'typo3temp/functional-' . substr(sha1(get_class($this)), 0, 7);
+            $instancePath = $this->getInstancePath();
         }
         $arguments = array(
             'documentRoot' => $instancePath,
             'requestUrl' => 'http://localhost' . $requestUrl,
         );
 
-        $template = new \Text_Template(ORIGINAL_ROOT . 'typo3/sysext/core/Tests/Functional/Fixtures/Frontend/request.tpl');
+        $template = new \Text_Template('ntf://Frontend/Request.tpl');
         $template->setVar(
             array(
                 'arguments' => var_export($arguments, true),
                 'originalRoot' => ORIGINAL_ROOT,
+                'ntfRoot' => __DIR__ . '/../../.Build/vendor/nimut/testing-framework/',
             )
         );
 
@@ -106,7 +107,7 @@ class RenderingTest extends FunctionalTestCase
         $result = json_decode($response['stdout'], true);
 
         if ($result === null) {
-            $this->fail('Frontend Response is empty');
+            $this->fail('Frontend Response is empty.' . LF . 'Error: ' . LF . $response['stderr']);
         }
 
         if ($failOnFailure && $result['status'] === Response::STATUS_Failure) {

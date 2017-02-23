@@ -27,8 +27,8 @@ install:
   - IF %PHP%==1 echo extension=php_fileinfo.dll >> php.ini
   - appveyor DownloadFile https://getcomposer.org/composer.phar
   - cd c:\projects\ext_scaffold
-  - composer require typo3/cms --prefer-dist --no-progress --ansi
+  - composer require typo3/cms --prefer-source --no-progress --ansi
 
 test_script:
   - cd c:\projects\ext_scaffold
-  - .Build\bin\phpunit\phpunit.bat -c .Build/vendor/typo3/cms/typo3/sysext/core/Build/UnitTests.xml Tests/Unit/
+  - .Build\bin\phpunit\phpunit.bat -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/

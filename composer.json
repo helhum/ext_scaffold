@@ -24,6 +24,7 @@
         "typo3/cms-core": "^7.6 || ^8.7"
     },
     "require-dev": {
+        "helhum/typo3-composer-setup": "^0.5.1",
         "nimut/testing-framework": "^2.0"
     },
     "autoload": {

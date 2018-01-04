@@ -48,13 +48,15 @@
     },
     "scripts": {
         "require-typo3-version": [
-            "@php -r '$conf=json_decode(file_get_contents(\"composer.json\"),true);$conf[\"require\"][\"typo3/cms-core\"]=$_SERVER[\"argv\"][1];file_put_contents(\"composer.json\",json_encode($conf,JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT).chr(10));'",
+            "@php -r '$conf=json_decode(file_get_contents(__DIR__.\"/composer.json\"),true);$conf[\"require\"][\"typo3/cms-core\"]=$_SERVER[\"argv\"][1];file_put_contents(__DIR__.\"/composer.json\",json_encode($conf,JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT).chr(10));'",
             "@composer install"
         ],
+        "link-extension": [
+            "@php -r 'is_dir($extFolder=__DIR__.\"/.Build/public/typo3conf/ext/\") || mkdir($extFolder, 0777, true);'",
+            "@php -r 'file_exists($extFolder=__DIR__.\"/.Build/public/typo3conf/ext/ext_scaffold\") || symlink(__DIR__,$extFolder);'"
+        ],
         "post-autoload-dump": [
-            "mkdir -p .Build/public/typo3conf/ext/",
-            "[ -L .Build/public/typo3conf/ext/ext_scaffold ] || ln -snvf ../../../../. .Build/public/typo3conf/ext/ext_scaffold",
-            "if [ ! -d .Build/vendor/typo3/cms/components ]; then mkdir -p .Build/vendor/typo3/cms/components/testing_framework/core && ln -snvf ../../../typo3/sysext/core/Build .Build/vendor/typo3/cms/components/testing_framework/core/Build; fi"
+            "@link-extension"
         ]
     },
     "extra": {

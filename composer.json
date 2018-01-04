@@ -26,7 +26,8 @@
         "typo3/cms-frontend": "^7.6.23 || ^8.7.9"
     },
     "require-dev": {
-        "nimut/testing-framework": "^2.0"
+        "nimut/testing-framework": "^2.0",
+        "helhum/typo3-composer-setup": "^0.5.1"
     },
     "autoload": {
         "psr-4": {
@@ -36,7 +37,7 @@
     "autoload-dev": {
         "psr-4": {
             "Helhum\\ExtScaffold\\Tests\\": "Tests/"
-           }
+        }
     },
     "replace": {
         "ext_scaffold": "self.version",
@@ -46,6 +47,10 @@
         "vendor-dir": ".Build/vendor"
     },
     "scripts": {
+        "require-typo3-version": [
+            "@php -r '$conf=json_decode(file_get_contents(\"composer.json\"),true);$conf[\"require\"][\"typo3/cms-core\"]=$_SERVER[\"argv\"][1];file_put_contents(\"composer.json\",json_encode($conf,JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT).chr(10));'",
+            "@composer install"
+        ],
         "post-autoload-dump": [
             "mkdir -p .Build/public/typo3conf/ext/",
             "[ -L .Build/public/typo3conf/ext/ext_scaffold ] || ln -snvf ../../../../. .Build/public/typo3conf/ext/ext_scaffold",

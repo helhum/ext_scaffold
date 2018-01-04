@@ -31,7 +31,7 @@ cache:
 install:
   - composer require --dev typo3/cms="$TYPO3_VERSION"
   - git checkout .
-  - export TYPO3_PATH_ROOT=$PWD/.Build/Web
+  - export TYPO3_PATH_ROOT=$PWD/.Build/public
 
 script:
   - >

@@ -1,7 +1,7 @@
 <?php
 $EM_CONF[$_EXTKEY] = array(
-  'title' => 'Extension skeleton for TYPO3 7',
-  'description' => 'Description for ext',
+  'title' => 'Scaffold extension',
+  'description' => 'Extension skeleton for TYPO3 7 and 8',
   'category' => 'Example Extensions',
   'author' => 'Helmut Hummel',
   'author_email' => 'info@helhum.io',

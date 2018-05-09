@@ -2,7 +2,7 @@
 namespace Helhum\ExtScaffold\Tests\Unit;
 
 use Helhum\ExtScaffold\Tests\Unit\Fixtures\LoadableClass;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 class FirstClassTest extends UnitTestCase
 {

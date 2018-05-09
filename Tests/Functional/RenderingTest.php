@@ -29,6 +29,7 @@ namespace Helhum\ExtScaffold\Tests\Functional;
 
 use Nimut\TestingFramework\Http\Response;
 use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use PHPUnit\Util\PHP\AbstractPhpProcess;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -98,7 +99,7 @@ class RenderingTest extends FunctionalTestCase
             )
         );
 
-        $php = \PHPUnit_Util_PHP::factory();
+        $php = AbstractPhpProcess::factory();
         $response = $php->runJob($template->render());
         $result = json_decode($response['stdout'], true);
 

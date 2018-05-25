@@ -6,8 +6,11 @@ php:
   - 7.2
 
 env:
-  - TYPO3_VERSION="^7.6"
-  - TYPO3_VERSION="^8.7"
+  matrix:
+    - TYPO3_VERSION="^7.6"
+    - TYPO3_VERSION="^7.6" DEPENDENCIES_PREFERENCE="--prefer-lowest"
+    - TYPO3_VERSION="^8.7"
+    - TYPO3_VERSION="^8.7" DEPENDENCIES_PREFERENCE="--prefer-lowest"
 
 sudo: false
 
@@ -21,8 +24,17 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - composer require-typo3-version "$TYPO3_VERSION"
-  - git checkout .
+  - >
+    composer require-typo3-version "$TYPO3_VERSION";
+  - >
+    echo;
+    echo "Installing the dependencies";
+    composer update --with-dependencies --prefer-stable --prefer-dist ${DEPENDENCIES_PREFERENCE};
+    composer show;
+  - >
+    echo;
+    echo "Restoring the composer.json";
+    git checkout .;
 
 script:
   - >

@@ -38,20 +38,20 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class RenderingTest extends FunctionalTestCase
 {
     /**
-     * @var array
+     * @var string[]
      */
-    protected $testExtensionsToLoad = array('typo3conf/ext/ext_scaffold');
+    protected $testExtensionsToLoad = ['typo3conf/ext/ext_scaffold'];
 
     /**
-     * @var array
+     * @var string[]
      */
-    protected $coreExtensionsToLoad = array('fluid');
+    protected $coreExtensionsToLoad = ['fluid'];
 
     protected function setUp()
     {
         parent::setUp();
         $this->importDataSet(__DIR__ . '/Fixtures/Database/pages.xml');
-        $this->setUpFrontendRootPage(1, array('EXT:ext_scaffold/Tests/Functional/Fixtures/Frontend/Basic.ts'));
+        $this->setUpFrontendRootPage(1, ['EXT:ext_scaffold/Tests/Functional/Fixtures/Frontend/Basic.ts']);
     }
 
     /**

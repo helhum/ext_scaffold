@@ -19,7 +19,7 @@ The [license](https://github.com/helhum/ext_scaffold/blob/master/composer.json#L
 Package links are specified in a require, require-dev, suggest and conflict sections, just like it can be done in the [ext_emconf.php](https://github.com/helhum/ext_scaffold/blob/master/ext_emconf.php#L21-L31)
 Regarding TYPO3 it is important to note, that specifying package names there is a bit tricky. For example when specifying a dependency to
 a PHP library which is available through composer, the TYPO3 extension manager will not be able to resolve this dependency and
-installation will fail. Especially when distributing the extension (e.g. through [TER](http://typo3.org/extensions/repository/)),
+installation will fail. Especially when distributing the extension (e.g. through [TER](https://extensions.typo3.org/)),
 it is important that no other dependencies are specified there except the one to TYPO3 itself. Extensions meant for distribution should
 specify dependencies in the ext_emconf.php file and only to other TER extensions.
 If the extension is meant for internal use and only ever installed via composer, it is fine to add any dependency to other composer libraries there,
@@ -43,7 +43,7 @@ It is also useful to define aliases of the same package. The latter is what is u
 the extension key of the package to be installed, so that a folder with the correct name can be created in `typo3conf/ext/`
 Therefore it is mandatory for TYPO3 extensions with composer.json file to make use of this section and that the first replace has the
 extension key as name. As version, always use `self.version` which references the exact same version as the current package.
-A second line with the conventional name for TER extensions provided by http://composer.typo3.org is also useful but not mandatory.
+A second line with the conventional name for TER extensions provided by https://composer.typo3.org is also useful but not mandatory.
 
 ### Branch alias ([doc](https://getcomposer.org/doc/articles/aliases.md))
 It is possible to create an [alias](https://github.com/helhum/ext_scaffold/blob/master/composer.json#L52-L55) name for the branch
@@ -92,5 +92,5 @@ Please note, that you need to specify a database user, that is allowed to create
 You can specify an arbitrary database name, it is only used to derive the test database names from.
 
 ### Travis CI
-The extension skeleton also comes with a `.travis.yml` file, which executes your tests (including a PHP syntax check) on every merge, by using the [Travis CI](http://docs.travis-ci.com/user/languages/php/) service.
-For that, your git repository must be hosted on [Github](http://github.com).
+The extension skeleton also comes with a `.travis.yml` file, which executes your tests (including a PHP syntax check) on every merge, by using the [Travis CI](https://docs.travis-ci.com/user/languages/php/) service.
+For that, your git repository must be hosted on [Github](https://github.com/).

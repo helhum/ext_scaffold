@@ -47,7 +47,7 @@ class RenderingTest extends FunctionalTestCase
      */
     protected $coreExtensionsToLoad = array('fluid');
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
         $this->importDataSet(__DIR__ . '/Fixtures/Database/pages.xml');

@@ -57,7 +57,7 @@ Read the next chapter for details how to execute the tests.
 ## Testing your extension
 ### Test Setup
 The first thing you need to do is to go to your extension directory and *"tell"* composer to set up
-the testing environment for a TYPO3 version you want to test against. For that, type `composer require typo3/cms=7.4.0` if e.g. TYPO3 7.4.0 is the TYPO3 version
+the testing environment for a TYPO3 version you want to test against. For that, type `composer require typo3/cms=7.6.0` if e.g. TYPO3 7.6.0 is the TYPO3 version
 you want to test your extension with.
 This will will install TYPO3 and all other required dependencies in a (hidden) `.Build/` folder. Since this command changed your composer.json file,
 make sure you reset the changes e.g. by doing a git checkout with `git checkout composer.json`.

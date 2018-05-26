@@ -7,7 +7,7 @@
         "extension",
         "scaffold"
     ],
-    "homepage": "http://helhum.io",
+    "homepage": "https://helhum.io",
     "support": {
         "issues": "https://github.com/helhum/ext_scaffold/issues"
     },
@@ -16,7 +16,7 @@
             "name": "Helmut Hummel",
             "email": "info@helhum.io",
             "role": "Developer",
-            "homepage": "http://helhum.io"
+            "homepage": "https://helhum.io"
         }
     ],
     "license": "GPL-2.0-or-later",

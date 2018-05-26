@@ -23,7 +23,6 @@ cache:
 install:
   - composer require-typo3-version "$TYPO3_VERSION"
   - git checkout .
-  - export TYPO3_PATH_ROOT=$PWD/.Build/public
 
 script:
   - >

@@ -21,7 +21,7 @@
     ],
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": "^5.5 || ~7.0 || ~7.1 || ~7.2",
+        "php": ">=5.5 <7.3",
         "typo3/cms-core": "^7.6.23 || ^8.7.10",
         "typo3/cms-fluid": "^7.6.23 || ^8.7.10",
         "typo3/cms-frontend": "^7.6.23 || ^8.7.10"
@@ -30,7 +30,7 @@
         "nimut/testing-framework": "^3.0"
     },
     "conflict": {
-        "typo3/cms-composer-installers": "< 1.4.6"
+        "typo3/cms-composer-installers": "<1.4.6"
     },
     "autoload": {
         "psr-4": {
@@ -63,6 +63,7 @@
             "dev-master": "1.0.x-dev"
         },
         "typo3/cms": {
+            "extension-key": "ext_scaffold",
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".Build/public"
         }

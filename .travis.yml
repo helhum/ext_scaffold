@@ -24,17 +24,8 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - >
-    composer require-typo3-version "$TYPO3_VERSION";
-  - >
-    echo;
-    echo "Installing the dependencies";
-    composer update --with-dependencies --prefer-stable --prefer-dist ${DEPENDENCIES_PREFERENCE};
-    composer show;
-  - >
-    echo;
-    echo "Restoring the composer.json";
-    git checkout .;
+  - composer require typo3/minimal "$TYPO3_VERSION" $DEPENDENCIES_PREFERENCE
+  - git checkout .
 
 script:
   - >

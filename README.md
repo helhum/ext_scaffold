@@ -37,7 +37,12 @@ Starting from TYPO3 version 7.5.0, the autoload section can also be specified in
 Besides that it is recommended to register classes that are only needed to execute tests in the dedicated [autoload-dev](https://github.com/helhum/ext_scaffold/blob/master/composer.json#L32-L37)
 section. These classes will then be available, when doing `composer install` in the extension directory, to later execute the tests.
 
-### replace ([doc](https://getcomposer.org/doc/04-schema.md#replace))
+## Define extension key
+In order to define the extension key in the composer, you need to set [`extra.typo3/cms.extension-key`](https://github.com/TYPO3/TYPO3.CMS/blob/3ec52ea781621941cfedbd164070f28eb0c1e194/typo3/sysext/core/composer.json#L99). Setting a replace is deprecated and will not work with composer version 2 and forward.
+
+### replace (deprecated) ([doc](https://getcomposer.org/doc/04-schema.md#replace))
+**This configuration is deprecated !** As of composer 2.0, replace always has to have a vendor and a package name, therefore breaking this behaviour. Please refrain from using this option for TYPO3 extension and use `extra.typo3/cms.extension-key` instead (see above).
+
 The [replace](https://github.com/helhum/ext_scaffold/blob/master/composer.json#L38-L41) section is used to specify packages, that are replaced when installing this package.
 It is also useful to define aliases of the same package. The latter is what is used by TYPO3 and the `typo3/cms-composer-installers` to determine
 the extension key of the package to be installed, so that a folder with the correct name can be created in `typo3conf/ext/`
